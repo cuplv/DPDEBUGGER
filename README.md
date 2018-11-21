@@ -15,13 +15,13 @@ cd /Your/Path/To/scikit-learn
 sudo python setup.py install
 ```
 Then, you can use Alignment Clsutering.
-```python
+```
 cd Spectral_Alignment/
 python SpectralClustering_1.py --filename fop/result_time.csv --measurements no --clusters 2 --featurex size --output ./fop/result_time_spectral.csv
 ```
 
 ### Classification Tree
-```python
+```
 cd Classification/
 python Classify.py --filename SnapBuddy_AAAI/SnapBuddy_final.csv --output SnapBuddy_AAAI/output
 dot -Tpng SnapBuddy_AAAI/output_tree1.dot -o SnapBuddy_AAAI/tree.png
