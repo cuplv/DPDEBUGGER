@@ -28,5 +28,5 @@ python SpectralClustering_1.py --filename fop/result_time.csv --measurements no 
 ```
 cd Classification/
 python Classify.py --filename SnapBuddy/SnapBuddy_for_classification.csv --output SnapBuddy/output
-dot -Tpng SnapBuddy_AAAI/output_tree1.dot -o SnapBuddy_AAAI/tree.png
+dot -Tpng SnapBuddy/output_tree1.dot -o SnapBuddy/tree.png
 ```
