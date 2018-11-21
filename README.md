@@ -2,6 +2,10 @@
 The repository for the implementations of performance debugging with machine learning tools
 Paper can be found here: [Differential Performance Debugging With Discriminant Regression Trees](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16647), AAAI'18, 2468-2475.
 
+DPDEBUGGER consists of two steps:
+1) Functional Clustering: The goal is to cluster traces with similar timing behaviors. The similarity definition needs to consider properties of inputs such as the size of inputs. This step uses two novel functional clustering algorithms: 1) KLinear Clustering that is an extension of KMeans algorithm, 2) Alignment Kernel that uses Spectral Clustering with a new similarity kernel between points.
+2) Classification: Decision Tree algorithm has used to explain what properties of program internals are common in the same cluster and what properties are separating different clusters. 
+
 ### KLinear Clustering
 ```
 cd KLinear/
