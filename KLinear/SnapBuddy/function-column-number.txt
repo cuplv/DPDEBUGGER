@@ -1,0 +1,8 @@
+size: B
+Time: C
+Kale : BF
+model.filter.filter: CG
+Emboos: ER
+Tritone: BT
+
+=IF(BF2=0,IF(CG2=0,0.0013*B2+283.9,IF(ER2=0,0.0074*B2+206.87,IF(BT2=0,0.0074*B2+206.87,0.014*B2+122.4))),
