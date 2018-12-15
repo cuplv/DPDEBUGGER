@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="7.4.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="7.4.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve Reg_Ex_4_1_Feb_2017" width="90" x="45" y="136">
+        <parameter key="repository_entry" value="../data/Reg_Ex_4_1_Feb_2017"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve Reg_Ex_4_2_Feb_2017" width="90" x="45" y="187">
+        <parameter key="repository_entry" value="../data/Reg_Ex_4_2_Feb_2017"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve Reg_Ex_3_2_Feb_2017" width="90" x="45" y="85">
+        <parameter key="repository_entry" value="../data/Reg_Ex_3_2_Feb_2017"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve Reg_Ex_2_2_Feb_2017" width="90" x="45" y="34">
+        <parameter key="repository_entry" value="../data/Reg_Ex_2_2_Feb_2017"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve Reg_Ex_3_3_Mar_2017" width="90" x="45" y="289">
+        <parameter key="repository_entry" value="../data/Reg_Ex_3_3_Mar_2017"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve Reg_Ex_4_3_Mar_2017" width="90" x="45" y="391">
+        <parameter key="repository_entry" value="../data/Reg_Ex_4_3_Mar_2017"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve Reg_Ex_5_3_Mar_2017" width="90" x="45" y="442">
+        <parameter key="repository_entry" value="../data/Reg_Ex_5_3_Mar_2017"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve RegEx_6_1_ver3" width="90" x="45" y="238">
+        <parameter key="repository_entry" value="../data/RegEx_6_1_ver3"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.4.000" expanded="true" height="68" name="Retrieve RegEx_7_1" width="90" x="45" y="544">
+        <parameter key="repository_entry" value="../data/RegEx_7_1"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="7.4.000" expanded="true" height="82" name="Set Role" width="90" x="447" y="391">
+        <parameter key="attribute_name" value="mean"/>
+        <parameter key="target_role" value="label"/>
+        <list key="set_additional_roles"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="7.4.000" expanded="true" height="103" name="Multiply" width="90" x="581" y="340"/>
+      <operator activated="true" class="log" compatibility="7.4.000" expanded="true" height="82" name="Log" width="90" x="581" y="238">
+        <list key="log">
+          <parameter key="time1" value="operator.W-M5P.value.execution-time"/>
+          <parameter key="time2" value="operator.Apply Model.value.execution-time"/>
+          <parameter key="time3" value="operator.W-M5P.value.time"/>
+          <parameter key="time4" value="operator.Apply Model.value.time"/>
+          <parameter key="time5" value="operator.Validation.value.execution-time"/>
+          <parameter key="time6" value="operator.Validation.value.time"/>
+        </list>
+        <parameter key="sorting_type" value="none"/>
+        <parameter key="sorting_k" value="100"/>
+        <parameter key="persistent" value="false"/>
+      </operator>
+      <operator activated="true" class="x_validation" compatibility="5.1.002" expanded="true" height="124" name="Validation" width="90" x="581" y="34">
+        <parameter key="create_complete_model" value="false"/>
+        <parameter key="average_performances_only" value="true"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_validations" value="10"/>
+        <parameter key="sampling_type" value="1"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <process expanded="true">
+          <operator activated="true" class="weka:W-M5P" compatibility="7.0.000" expanded="true" height="82" name="W-M5P" width="90" x="112" y="85">
+            <parameter key="N" value="false"/>
+            <parameter key="U" value="false"/>
+            <parameter key="R" value="false"/>
+            <parameter key="M" value="4.0"/>
+            <parameter key="L" value="false"/>
+          </operator>
+          <operator activated="false" class="weka:W-LinearRegression" compatibility="7.0.000" expanded="true" height="82" name="W-LinearRegression" width="90" x="112" y="187">
+            <parameter key="D" value="false"/>
+            <parameter key="S" value="2.0"/>
+            <parameter key="C" value="false"/>
+            <parameter key="R" value="1.0E-8"/>
+          </operator>
+          <operator activated="false" class="weka:W-SimpleLinearRegression" compatibility="7.0.000" expanded="true" height="82" name="W-SimpleLinearRegression" width="90" x="112" y="289">
+            <parameter key="D" value="false"/>
+          </operator>
+          <connect from_port="training" to_op="W-M5P" to_port="training set"/>
+          <connect from_op="W-M5P" from_port="model" to_port="model"/>
+          <portSpacing port="source_training" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="7.1.001" expanded="true" height="82" name="Apply Model" width="90" x="45" y="30">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_regression" compatibility="7.4.000" expanded="true" height="82" name="Performance" width="90" x="179" y="187">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="root_mean_squared_error" value="true"/>
+            <parameter key="absolute_error" value="false"/>
+            <parameter key="relative_error" value="true"/>
+            <parameter key="relative_error_lenient" value="false"/>
+            <parameter key="relative_error_strict" value="false"/>
+            <parameter key="normalized_absolute_error" value="false"/>
+            <parameter key="root_relative_squared_error" value="false"/>
+            <parameter key="squared_error" value="true"/>
+            <parameter key="correlation" value="true"/>
+            <parameter key="squared_correlation" value="true"/>
+            <parameter key="prediction_average" value="true"/>
+            <parameter key="spearman_rho" value="false"/>
+            <parameter key="kendall_tau" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model" to_port="unlabelled data"/>
+          <connect from_op="Apply Model" from_port="labelled data" to_op="Performance" to_port="labelled data"/>
+          <connect from_op="Performance" from_port="performance" to_port="averagable 1"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_averagable 1" spacing="0"/>
+          <portSpacing port="sink_averagable 2" spacing="0"/>
+        </process>
+        <description align="center" color="transparent" colored="false" width="126">A cross validation including a linear regression.</description>
+      </operator>
+      <connect from_op="Retrieve RegEx_7_1" from_port="output" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Multiply" to_port="input"/>
+      <connect from_op="Multiply" from_port="output 1" to_op="Log" to_port="through 1"/>
+      <connect from_op="Multiply" from_port="output 2" to_port="result 3"/>
+      <connect from_op="Log" from_port="through 1" to_op="Validation" to_port="training"/>
+      <connect from_op="Validation" from_port="model" to_port="result 1"/>
+      <connect from_op="Validation" from_port="averagable 1" to_port="result 2"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
+    </process>
+  </operator>
+</process>

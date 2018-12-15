@@ -1,0 +1,8 @@
+RegEx_3_1_Mar17.csv
+“?”
+2
+1 size n
+2 mean d
+3 f0 b
+4 f1 b
+5 f2 b

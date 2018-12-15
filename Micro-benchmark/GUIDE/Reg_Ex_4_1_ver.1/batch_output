@@ -1,0 +1,244 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Compiled with NAG Fortran 6.1 on Mac OS X Sierra 10.12.1
+ Version 23.3 (Build date: November 23, 2016)      
+ Copyright (c) 1997-2016 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on: 08/18/17 at 19:26
+  
+ Powers are dropped if they are not significant at level .0500
+ Least squares regression tree
+ Predictions truncated at global min and max of D sample values
+ Pruning by cross-validation
+ Data description file: description.txt
+ Training sample file: RegEx_4_1.csv
+ Missing value code: “?”
+ Records in data file start on line 2
+ Warning: B variables changed to C
+ Dependent variable is time
+ Piecewise simple linear or constant model
+ Number of records in data file: 1600
+ Length of longest data entry: 6
+  
+ Summary information (without x variables)
+ d=dependent, b=split and fit cat variable using 0-1 dummies,
+ c=split-only categorical, n=split and fit numerical, f=fit-only numerical,
+ s=split-only numerical, w=weight
+  Column  Name            Minimum      Maximum   #Categories       #Missing
+       1  size       n   1.0000E+00   1.0000E+02
+       2  time       d   1.0900E+02   2.4067E+05
+       3  f0         c                                     2
+       4  f1         c                                     2
+       5  f2         c                                     2
+       6  f3         c                                     2
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var   #B-var   #C-var
+       1600          0          0        0        1        0        0        0        4
+ No weight variable in data file
+ No. cases used for training: 1600
+  
+ Missing values imputed with node means for model fitting
+ Interaction tests on all variables
+ Pruning by v-fold cross-validation, with v =  10
+ Selected tree is based on mean of CV estimates
+ Fraction of cases used for splitting each node =   1.0000    
+ Max number of split levels =  11
+ Minimum node size =  79
+  
+ Pruning sequence
+   Subtree     Pruned  #Terminal        True           Geometric
+    number       node      nodes        alpha             mean
+         0          0         15       0.0000          0.0000    
+         1          8         14       0.0000          0.0000    
+         2         20         13      0.10965         0.17422    
+         3         10         12      0.27681         0.75112    
+         4          5         11       2.0381          315.44    
+         5         13         10       48821.          53885.    
+         6          9          9       59475.          78925.    
+         7         15          8      0.10474E+06     0.22960E+06
+         8          7          7      0.50331E+06     0.74748E+07
+         9          6          5      0.11101E+09     0.15693E+09
+        10          2          3      0.22183E+09     0.28282E+09
+        11          3          2      0.36057E+09     0.87751E+09
+        12          1          1      0.21356E+10     0.17977+309
+  
+ Number of SE's for pruned tree =   5.0000E-01
+  
+ Size and CV MSE and SE of subtrees:
+  Tree   #Tnodes  Mean MSE   SE(Mean)    BSE(Mean)  Median MSE  BSE(Median)
+    1+      14   2.048E+07   4.740E+06   1.744E+07   1.478E+06   4.260E+06
+    2       13   2.048E+07   4.740E+06   1.744E+07   1.478E+06   4.260E+06
+    3       12   2.048E+07   4.740E+06   1.744E+07   1.478E+06   4.260E+06
+    4*      11   2.048E+07   4.740E+06   1.744E+07   1.478E+06   4.260E+06
+    5       10   2.048E+07   4.740E+06   1.744E+07   1.478E+06   4.259E+06
+    6        9   2.048E+07   4.740E+06   1.744E+07   1.478E+06   4.259E+06
+    7        8   2.064E+07   4.740E+06   1.745E+07   1.601E+06   4.266E+06
+    8**      7   2.177E+07   4.900E+06   1.808E+07   2.059E+06   4.418E+06
+    9        5   2.263E+08   2.234E+07   2.161E+07   2.217E+08   3.439E+07
+   10        3   3.900E+08   2.587E+07   6.041E+07   3.621E+08   1.154E+08
+   11        2   1.031E+09   3.437E+07   2.376E+07   1.033E+09   3.823E+07
+   12        1   3.167E+09   1.009E+08   4.826E+07   3.135E+09   5.687E+07
+  
+ 0-SE tree based on mean is marked with *
+ 0-SE tree based on median is marked with +
+ Selected-SE tree based on mean using naive SE is marked with **
+ Selected-SE tree based on mean using bootstrap SE is marked with --
+ Selected-SE tree based on median and bootstrap SE is marked with ++
+ ** tree same as ++ tree
+ ** tree same as -- tree
+ ++ tree same as -- tree
+  
+ Following tree is based on mean CV with naive SE estimate (**).
+  
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ D-mean is mean of time in the node
+ Cases fit give the number of cases used to fit node
+ MSE and R^2 are based on all cases in node
+        Node    Total    Cases Matrix    Node      Node      Node  Split         Other
+        label   cases      fit  rank    D-mean     MSE       R^2   variable      variables
+           1     1600     1600     2  5.849E+04  3.168E+09  0.2521 f3  +size
+           2      782      782     2  1.602E+04  9.105E+08  0.0823 f2  +size
+           4      385      385     2  3.240E+04  1.173E+09  0.2120 f1  +size
+           8T     168      168     2  1.302E+02  3.243E+02  0.0456 size  +size
+           9T     217      217     2  5.739E+04  1.330E+06  0.9989 size  +size
+           5T     397      397     2  1.315E+02  1.534E+03  0.0181 size  +size
+           3      818      818     2  9.910E+04  1.146E+09  0.7109 f2  +size
+           6      404      404     2  7.661E+04  8.861E+08  0.6513 f0  +size
+          12      188      188     2  9.228E+04  1.184E+09  0.6817 f1  +size
+          24T      92       92     2  6.079E+04  1.697E+06  0.9982 -  +size
+          25T      96       96     2  1.225E+05  5.466E+06  0.9988 -  +size
+          13T     216      216     2  6.296E+04  1.471E+06  0.9987 size  +size
+           7T     414      414     2  1.210E+05  5.144E+06  0.9988 size  +size
+  
+ Number of terminal nodes of final tree: 7
+ Total number of nodes of final tree:    13
+ Second best split variable (based on curvature test) at root node is f2
+  
+ Regression tree:
+  
+  Node 1: f3 = "0"
+    Node 2: f2 = "1"
+      Node 4: f1 = "0"
+        Node 8: time-mean =  1.30185E+02
+      Node 4: f1 /= "0"
+        Node 9: time-mean =  5.73918E+04
+    Node 2: f2 /= "1"
+      Node 5: time-mean =  1.31458E+02
+  Node 1: f3 /= "0"
+    Node 3: f2 = "0"
+      Node 6: f0 = "1"
+        Node 12: f1 = "0"
+          Node 24: time-mean =  6.07944E+04
+        Node 12: f1 /= "0"
+          Node 25: time-mean =  1.22456E+05
+      Node 6: f0 /= "1"
+        Node 13: time-mean =  6.29626E+04
+    Node 3: f2 /= "0"
+      Node 7: time-mean =  1.21048E+05
+ 
+ ***************************************************************
+ 
+  
+ Node 1: Intermediate node
+ A case goes into Node 2 if f3 = "0"
+ f3 mode = "1"
+ Coefficients of least squares regression function:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   1.3690E+03        0.48 0.6293
+ size       1.1312E+03       23.21 0.0000  1.0000E+00  5.0500E+01  1.0000E+02
+ Mean of time =   5.8494128125000003E+04
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+ Node 2: Intermediate node
+ A case goes into Node 4 if f2 = "1"
+ f2 mode = "0"
+ ----------------------------
+ Node 4: Intermediate node
+ A case goes into Node 8 if f1 = "0"
+ f1 mode = "1"
+ ----------------------------
+ Node 8: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   1.2316E+02       43.15 0.0000
+ size       1.3471E-01        2.82 0.0054  1.0000E+00  5.2131E+01  1.0000E+02
+ Mean of time =   1.3018452380952380E+02
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+ Node 9: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   1.0981E+03        7.34 0.0000
+ size       1.1682E+03      441.61 0.0000  1.0000E+00  4.8189E+01  1.0000E+02
+ Mean of time =   5.7391838709677417E+04
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+ Node 5: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   1.2261E+02       32.07 0.0000
+ size       1.8104E-01        2.70 0.0072  1.0000E+00  4.8894E+01  1.0000E+02
+ Mean of time =   1.3145843828715365E+02
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+ Node 3: Intermediate node
+ A case goes into Node 6 if f2 = "0"
+ f2 mode = "1"
+ ----------------------------
+ Node 6: Intermediate node
+ A case goes into Node 12 if f0 = "1"
+ f0 mode = "0"
+ ----------------------------
+ Node 12: Intermediate node
+ A case goes into Node 24 if f1 = "0"
+ f1 mode = "1"
+ ----------------------------
+ Node 24: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   1.5234E+03        5.06 0.0000
+ size       1.1609E+03      220.77 0.0000  1.0000E+00  5.1054E+01  1.0000E+02
+ Mean of time =   6.0794413043478264E+04
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+ Node 25: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   2.8353E+03        5.80 0.0000
+ size       2.3185E+03      280.36 0.0000  1.0000E+00  5.1594E+01  9.9000E+01
+ Mean of time =   1.2245627083333333E+05
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+ Node 13: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   1.2968E+03        7.51 0.0000
+ size       1.1640E+03      406.69 0.0000  1.0000E+00  5.2977E+01  1.0000E+02
+ Mean of time =   6.2962643518518518E+04
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+ Node 7: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor Coefficient      t-stat  p-val     Minimum        Mean     Maximum
+ Constant   2.8126E+03       12.31 0.0000
+ size       2.3220E+03      592.78 0.0000  1.0000E+00  5.0920E+01  1.0000E+02
+ Mean of time =   1.2104757729468599E+05
+ Predicted values truncated at   1.0900000000000000E+02 &   2.4067100000000000E+05
+ ----------------------------
+  
+ Proportion of variance (R-squared) explained by tree model =  .9995
+ 
+ Observed and fitted values are stored in store_node
+ LaTeX code for tree is in latex_tree
+ Elapsed time in seconds:    0.1477390

@@ -1,0 +1,12 @@
+RegEx_7_1.csv
+“?”
+2
+1 size f
+2 time d
+3 f0 b
+4 f1 b
+5 f2 b
+6 f3 b
+7 f4 b
+8 f5 b
+9 f6 b
