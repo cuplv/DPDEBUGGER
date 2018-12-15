@@ -104,5 +104,5 @@ dot -Tpng SnapBuddy/output_tree1.dot -o SnapBuddy/tree.png
 4) Micro-benchmarks:
 Micro-benchmarks for comparisons with CART, M5Prime, and GUIDE is available in this
 repository. We use scikit learn library for learning CART, Weka library in Rapidminer
-for M5Prime, and [the following link]](http://www.stat.wisc.edu/~loh/guide.html) for
+for M5Prime, and [the following link](http://www.stat.wisc.edu/~loh/guide.html) for
 GUIDE classification and regression tree. (More updates will be provided for Micro-benchmark soon).
