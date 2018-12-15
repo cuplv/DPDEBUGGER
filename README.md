@@ -2,6 +2,7 @@
 The repository for the implementations of performance debugging with machine learning tools
 Paper can be found here: [Differential Performance Debugging With Discriminant Regression Trees](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16647), AAAI'18, 2468-2475.
 
+
 The goal of Differential Performance Debugging is to explain unexpected performance differences of a program tested on different inputs.
 
 DPDEBUGGER is a two steps approach: Functional Clustering and Classification.
@@ -80,7 +81,7 @@ applying DPDEBUGGER on Apache FOP.
 1) K-Linear Clustering:
 ```
 cd KLinear/
-python Cluster.py --filename SnapBuddy_AAAI/snapBuddy_for_clustering.csv --measurements no --featurex size --clusters 5 --output test_output
+python Cluster.py --filename SnapBuddy/snapBuddy_for_clustering.csv --measurements no --featurex size --clusters 5 --output SnapBuddy/test_output
 ```
 2) Spectral Clustering with Alignment Kernel:
 First, you need to modify the file in /Your/Path/To/scikit-learn/sklearn/metrics/pairwise.py.
@@ -97,8 +98,8 @@ python SpectralClustering_1.py --filename fop/result_time.csv --measurements no 
 3) Decision Tree Learning
 ```
 cd Classification/
-python Classify.py --filename SnapBuddy_AAAI/SnapBuddy_final.csv --output SnapBuddy_AAAI/output
-dot -Tpng SnapBuddy_AAAI/output_tree1.dot -o SnapBuddy_AAAI/tree.png
+python Classify.py --filename SnapBuddy/SnapBuddy_for_classification.csv --output SnapBuddy/output
+dot -Tpng SnapBuddy/output_tree1.dot -o SnapBuddy/tree.png
 ```
 4) Micro-benchmarks:
 Micro-benchmarks for comparisons with CART, M5Prime, and GUIDE is available in this
